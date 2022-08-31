@@ -179,9 +179,10 @@ label {
     border-radius: 8px;
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
     width: 20%;
-    background-color: rgb(230, 230, 230);
-    margin-right: 15px;
-    margin-bottom: 15px;
+    background-color: rgb(255, 255, 255);
+    margin-right: 25px;
+    margin-bottom: 25px;
+    padding: 10px;
   }
 
   #searchResult {
