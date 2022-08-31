@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Windmill inventory</title>
+    <link rel="stylesheet" href="styles/mystyle.css">
+</head>
+
+<body>
+    <h1>windmill inventory</h1>
+    <div class="header">
+        <div>   
+            <button type="button" class="button" id="addWindmillButton">Add Windmill</button>
+            <button type="button" class="button" id="showAllWindmillsButton">Show All Windmills</button>
+        </div>
+     <form id="snSearchForm">
+          <input type="search" id="snField" class="inputField"
+          placeholder="Search serial number" required>
+         <button type="submit" class="button">Search</button>
+    </form>
+</div>
+
+<!--panel starts here-->
+<aside class="searchPanel" id="searchPanel">
+    <span class="panelText" id="panelText">A D V A N C E D&nbsp;&nbsp; S E A R C H </span>
+    <form id="searchForm" class="searchForm">
+        <div class="closeCross" id="closeCross">X</div>
+        <label class="searchFormlabel" for="opstilling">opstilling</label>
+        <input type="text" id="opstilling" class="searchFormField">
+
+        <label class="searchFormlabel" for="model">Model</label>
+        <input type="text" id="model" class="searchFormField">
+
+        <label class="searchFormlabel" for="MW">MW sidste år</label>
+        <input type="text" id="MW" class="searchFormField">
+
+        <br><br>
+
+        <div class="searchFormPanel">
+            <button type="reset" class="searchFormButton">Reset</button>
+            <button type="submit" class="searchFormButton">Apply</button>
+        </div>
+    </form>
+</aside>
+<!--panel ends here-->
+
+<!-- Add Guitar dialog box "Start" -->
+
+<dialog id="windmillDialog">
+    <form method="dialog" id="windmillDialogForm">
+        <fieldset>
+            <legend>Add New Windmill</legend>
+            <label for="snfield">S/N: </label><input type="text" class="inputField dialogField" id="snfield" placeholder="Type in Serial number" required>
+            <label for="modelfield">Model: </label><input type="text" class="inputField dialogField" id="modelfield" placeholder="Type in model" required>
+            <label for="opstillet">Opstillings år: </label><input type="text" class="inputField dialogField" id="opstillingsfield" placeholder="Type in opstillings år" required>
+            <label for="mwfield">mW Sidste År: </label><input type="text" class="inputField dialogField" id="mwfield" placeholder="Type in mW" required>
+
+            <br><br>
+            <div class="dialogBtnsPanel">
+                <button type="button" class="button" id="cancelButton">Cancel</button>
+                <button type="submit" id="saveButton" class="button">Save</button>
+            </div>
+        </fieldset>
+    </form>
+</dialog>
+
+<!-- Add Guitar dialog box "Stops" -->
+
+<!-- Delete dialog -->
+
+<dialog id="confirmDialog">
+    <form method="dialog" id="confirmDialogForm">
+        <fieldset>
+            <legend>Delete windmill?</legend>
+            Do you want to delete this windmill?
+            <br><br>
+            <div clas="dialogBtnsPanel">
+                <button type="submit" class="button">YES</button>
+                <button type="button" class="button" id="cancelConfirmBtn">NO</button>
+            </div>
+        </fieldset>
+    </form>
+
+</dialog>
+
+<!-- hidden field -->
+<form action="">
+    <input type="hidden" id="hiddenSnField">
+</form>
+    <div id="searchResult"></div>
+
+<div id="snackBar">Message vil arrive here</div>
+
+<script type="module">
+    import Model from "./models/model.js"
+    import Controller from "./controllers/controller.js"
+    import View from "./views/view.js"
+
+    window.onload = function (){
+        const model = new Model();
+        const controller = new Controller();
+        const view = new View(controller);
+        controller.initialize(model, view);
+    }
+</script>
+ 
+
+</body>
+
+</html>
